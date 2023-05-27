@@ -1,0 +1,564 @@
+
+#include<iostream>
+#include<stdlib.h>
+#include<conio.h>
+#include<windows.h>
+using namespace std;
+int main()
+{
+    system ("CLS");
+
+
+    string arr[25][25];
+    int x,y,score;
+    score =0;
+    int a=23,b=12,c=9,d=19,e=9,f=12,g=4,h=1,i=20,j=17,n;
+    int select;
+    char move;
+
+    system("Color 1F");
+
+        cout<<"\n\n\n";
+      cout <<"       "; Sleep(200);cout<<"      ###############			   "<< endl;
+    cout << "       "; Sleep(200);cout<<"      ##################		   "<< endl;
+    cout << "       "; Sleep(200);cout<<"    #######################		   "<< endl;
+    cout << "       "; Sleep(200);cout<<"  ##############   ###########				   "<< endl;
+    cout << "       "; Sleep(200);cout<<"##############################				   "<< endl;
+    cout << "       "; Sleep(200);cout<<"#######################				   "<< endl;
+    cout << "       "; Sleep(200);cout<<"####################			   "<< endl;
+    cout << "       "; Sleep(200);cout<<"################			   "<< endl;
+    cout << "       "; Sleep(200);cout<<"#############			   "<< endl;
+    cout << "       "; Sleep(200);cout<<"###########				   "<< endl;
+    cout << "       "; Sleep(200);cout<<"#########					   "<< endl;
+    cout << "       "; Sleep(200);cout<<"############			   "<< "PACMAN" << endl;
+    cout << "       "; Sleep(200);cout<<"##################		   "<< endl;
+    cout << "       "; Sleep(200);cout<<"#######################		   "<< endl;
+    cout << "       "; Sleep(200);cout<<"###########################				   "<< endl;
+    cout << "       "; Sleep(200);cout<<"##############################				   "<< endl;
+    cout << "       "; Sleep(200);cout<<"    #######################				   "<< endl;
+    cout << "       "; Sleep(200);cout<<"      ####################			   "<< endl;
+    cout << "       "; Sleep(200);cout<<"        ################			   "<< endl;
+
+    cout << endl;
+
+    system("CLS");
+
+    cout<<"\n\n\n              \x0F\x0F\x0F\x0F\x0F\x0F\x0F\x0F\x0F\x0F\x0F WELCOME TO PACMAN GAME \x0F\x0F\x0F\x0F\x0F\x0F\x0F\x0F\x0F\x0F\x0F\n";
+    cout<<"\n\n \x1A Designed By: Hashir Ahmad\n\n \x1A Presented To: Mam Maryam Kamal";
+    cout<<"\n \x0A\x0A INSTRUCTIONS: \x0A\x0A";
+    cout<<" Use the arrow keys given below to move the PacMan.\n By moving and eating the dots . Your score will be\n increased by +1. If the Player touches the\n Wall or Ghosts 'G','H','K','L', Game Is Over!";
+    cout<<"\n\n\n \x1A Press any key to start the GAME: ";
+    cin>>n;
+
+
+
+
+    cout<<"\n\n";
+
+    //For designing the Map
+
+    game:
+        {
+
+    for(x=0; x<25; x++)
+    {
+        for(y=0; y<25; y++)
+        {
+         if(x==0 || x==24)
+         {
+          arr[x][y]="*";
+         }
+         else if(y==0 || y==24)
+         {
+          arr[x][y]="*";
+         }
+         else if(x==2 && y>1 && y<5)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==3 && y>1 && y<5)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==2 && y>5 && y<10)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==3 && y>5 && y<10)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==1 && y>10 && y<14)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==2 && y>10 && y<14)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==3 && y>10 && y<14)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==2 && y>14 && y<19)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==3 && y>14 && y<19)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==2 && y>19 && y<23)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==3 && y>19 && y<23)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==5 && y>1 && y<5)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==5 && y>5 && y<8)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==5 && y>8 && y<16)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==6 && y>10 && y<14)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==7 && y>10 && y<14)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==8 && y>10 && y<14)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==7 && y>1 && y<5)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==8 && y>1 && y<5)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==9 && y>1 && y<5)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==10 && y>1 && y<5)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==12 && y>1 && y<5)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==13 && y>1 && y<5)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==14 && y>1 && y<5)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==15 && y>1 && y<5)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==7 && y>19 && y<23)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==8 && y>19 && y<23)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==9 && y>19 && y<23)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==10 && y>19 && y<23)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==12 && y>19 && y<23)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==13 && y>19 && y<23)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==14 && y>19 && y<23)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==15 && y>19 && y<23)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==17 && y>1 && y<5)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==18 && y>2 && y<5)
+         {
+             arr[x][y]="*";
+         } else if(x==19 && y>2 && y<5)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==19 && y==1)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==7 && y>5 && y<10)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==8 && y>5 && y<10)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==9 && y>5 && y<10)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==10 && y>5 && y<10)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==5 && y>16 && y<19)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==5 && y>19 && y<23)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==7 && y>14 && y<19)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==8 && y>14 && y<19)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==9 && y>14 && y<19)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==10 && y>14 && y<19)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==10 && y>10 && y<14)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==11 && y>10 && y<14)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==12 && y>10 && y<14)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==13 && y>10 && y<14)//
+         {
+             arr[x][y]="*";
+         }
+          else if(x==12 && y>5 && y<10)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==13 && y>5 && y<10)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==14 && y>5 && y<9)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==15 && y>5 && y<9)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==12 && y>14 && y<19)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==13 && y>14 && y<19)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==14 && y>15 && y<19)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==15 && y>15 && y<19)//
+         {
+             arr[x][y]="*";
+         }
+         else if(x==15 && y>9 && y<12)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==15 && y>12 && y<15)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==15 && y>12 && y<15)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==16 && y>9 && y<11)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==16 && y>13 && y<15)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==17 && y>9 && y<11)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==17 && y>13 && y<15)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==18 && y>9 && y<15)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==17 && y>19 && y<23)
+         {
+             arr[x][y]="*";
+         } else if(x==18 && y>19 && y<22)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==19 && y>19 && y<22)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==19 && y>22 && y<24)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==17 && y>5 && y<9)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==18 && y>5 && y<9)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==19 && y>5 && y<9)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==17 && y>15 && y<19)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==18 && y>15 && y<19)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==19 && y>15 && y<19)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==22 && y>1 && y<6)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==22 && y>12 && y<18)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==22 && y>6 && y<12)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==22 && y>18 && y<23)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==21 && y>1 && y<6)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==21 && y>6 && y<12)
+         {
+             arr[x][y]="*";
+         }
+
+          else if(x==21 && y>12 && y<18)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==21 && y>18 && y<23)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==19 && y>9 && y<15)
+         {
+             arr[x][y]="*";
+         }
+         else if(x==17 && y>10 && y<12)
+         {
+             arr[x][y]="*";
+         }
+          else if(x==17 && y>12 && y<14)
+         {
+             arr[x][y]="*";
+         }
+         else
+         {
+             arr[x][y]=".";
+         }
+        }
+    }
+
+    //For displaying the Map
+
+    cout<<"\t\t\t\t\tYour Score: "<<score<<endl<<endl;
+
+
+
+    arr[a][b]="0";
+    arr[c][d]="G";
+    arr[e][f]="H";
+    arr[g][h]="K";
+    arr[i][j]="L";
+
+    for(x=0; x<25; x++)
+    {
+        for(y=0; y<25; y++)
+        {
+            cout<<arr[x][y]<<" ";
+        }
+        cout<<endl;
+
+
+    }
+
+       while(true)
+    {
+
+
+        cout<<"\n\n Use following arrow keys to move the PacMan'O'\n\n";
+        cout<<" 'I' for UP\n 'K' for Down\n 'J' for Left\n 'L' for Right\n"<<endl;
+        cout <<"\n Enter The Key: ";
+        cin >>move;
+        cout<<endl;
+
+        if(move=='k')
+        {
+            a++;
+
+            if(a>0)
+            {
+                arr[a-1][b]=" ";
+            }
+        }
+        if(move=='i')
+        {
+            a--;
+
+            if(a>0)
+            {
+                arr[a+1][b]=" ";
+            }
+        }
+        if(move=='j')
+        {
+            b--;
+
+            if(a>0)
+            {
+                arr[a][b+1]=" ";
+            }
+        }
+        if(move=='l')
+        {
+            b++;
+
+            if(a>0)
+            {
+                arr[a][b-1]=" ";
+            }
+        }
+
+        if(arr[a][b]=="*")
+        {
+            system("CLS");
+            cout<<"\n\n\n  <Ooops> Your PacMan Has Touched The Wall!\n";
+            cout<<"\n  \x1A Your Score Is: "<<score<<endl;
+            cout<<"\n\n              \x0F\x0F\x0F\x0F\x0F\x0F\x0F\x0F\x0F\x0F\x0F Game Over \x0F\x0F\x0F\x0F\x0F\x0F\x0F\x0F\x0F\x0F\x0F\n\n";
+            break;
+        }
+
+        if(arr[a][b]=="G" || arr[a][b]=="H" || arr[a][b]=="K" || arr[a][b]=="L")
+        {
+            system("CLS");
+            cout<<"\n\n\n  <Ooops> Your PacMan Has Touched The Ghost!\n";
+            cout<<"\n  \x1A Your Score Is: "<<score<<endl;
+            cout<<"\n\n              \x0F\x0F\x0F\x0F\x0F\x0F\x0F\x0F\x0F\x0F\x0F Game Over \x0F\x0F\x0F\x0F\x0F\x0F\x0F\x0F\x0F\x0F\x0F\n\n";
+            break;
+        }
+
+
+
+       system("CLS");
+
+       cout<<"\n\n";
+
+         if(arr[a][b]==".")
+         {
+             score++;
+         }
+         cout<<"  Game in Progress...\n\n";
+         cout<<"\t\t\t\t\tYour Score: "<<score<<endl<<endl;
+
+         arr[a][b]="O";
+
+    for(x=0; x<25; x++)
+    {
+        for(y=0; y<25; y++)
+        {
+            cout<<arr[x][y]<<" ";
+        }
+        cout<<endl;
+    }
+    }
+
+    }
+    cout<<"\n \x1A Press 1 to continue the Game OR Press 2 to Exit: ";
+    cin>>select;
+    cout<<endl;
+
+
+    if(select == 1)
+    {
+        goto game;
+    }
+    else
+    {
+        cout<<"\n          <Thanks For Playing>\n\n\n\n\n";
+    }
+
+
+   return 1;
+}
+
