@@ -1,0 +1,1071 @@
+ #include <iostream>
+
+
+
+using namespace std;
+
+class Items
+
+{
+
+
+
+public:
+
+    Items()
+
+    {}
+
+    void Menu()
+
+    {
+
+        cout << endl;
+
+        cout<<"\t\t\t\t\t\t\t"<<"MENU"<<endl<<endl<<endl;
+
+        cout << "1 - Sandwich	 120 RS"<<"\t\t\t";
+
+        cout << "2 - Chips		100 RS" <<"\t\t\t";
+
+        cout << "3 - Pickle 		40 RS" <<endl;
+
+        cout << "4 - Brownie 	 100 RS"<<"\t\t\t";
+
+        cout << "5 - Regular Drink 	30 RS"<<"\t\t\t";
+
+        cout << "6 - Large Drink 	110 RS"<<endl;
+
+        cout << "7 - Ice-cream 	 60 RS"<<"\t\t\t";
+
+        cout << "8 - Coffee 		70 RS"<<"\t\t\t";
+
+        cout << "9 - Tea 		40 RS"<<endl;
+
+        cout << "10 - Biscuits 	 50 RS"<<"\t\t\t";
+
+        cout << "11 - Cereals 		120 RS"<<"\t\t\t";
+
+        cout << "12 - Milk 		130 RS"<<endl;
+
+        cout << "13 - Cream    	 80 RS"<<"\t\t\t";
+
+        cout << "14 - Chocolate		100 RS"<<"\t\t\t";
+
+        cout << "15 - Toffee 		5 RS"<<endl;
+
+        cout << "16 - Marshmello	 10 RS"<<"\t\t\t";
+
+        cout << "17 - Batteries 		60 RS" <<"\t\t\t";
+
+        cout << "18 - Perfumes 		300 RS" <<endl;
+
+        cout << "19 - Hair-color	 90 RS"<<"\t\t\t";
+
+        cout << "20 - Meat 		300 RS" <<"\t\t\t";
+
+        cout << "21 - Fish 		600 RS" <<endl;
+
+        cout << "22 - Bread 	 110 RS" <<"\t\t\t";
+
+        cout << "23 - Butter 		160 RS"<<"\t\t\t" ;
+
+        cout << "24 - Egg 		20 RS" <<endl;
+
+        cout << "25 - Sugar 	 60 RS"<<"\t\t\t";
+
+        cout << "26 - Rice 		110 RS" <<"\t\t\t";
+
+        cout << "27 - Pasta 		150 RS"<<endl;
+
+        cout << "28 - Honey 	 250 RS"<<"\t\t\t";
+
+        cout << "29 - Nuts 		500 RS"<<"\t\t\t";
+
+        cout << "30 - Water 		80 RS"<<endl<<endl<<endl;
+
+        cout << "0 - Cancel sale and start over"<<endl;
+
+        cout << "31 - Total the sale" << endl;
+
+        cout<<endl<< "All items have additional 8.25% tax." << endl;
+
+    }
+
+    void display()
+
+    {
+
+        cout<<"YOU ORDERED :";
+
+        Menu();
+
+
+
+    }
+
+};
+
+class Drink     :public Items
+
+{
+
+protected:
+
+    string Which_drink;
+
+    double price_drink;
+
+public:
+
+    Drink (){}
+
+    Drink(string w,double p){
+
+        Which_drink=w;
+
+        price_drink=p;
+
+    }
+
+
+
+    void setDrink(string d)
+
+    {
+
+        Which_drink=d;
+
+
+
+    }
+
+    void setPricedrink(double p)
+
+    {
+
+        price_drink=p;
+
+    }
+
+    string getDrink()
+
+    {
+
+        return Which_drink;
+
+    }
+
+    double getpricedrink()
+
+    {
+
+        return price_drink;
+
+    }
+
+    void display_drink()
+
+    {
+
+        Items :: display();
+
+        cout<<"DRINK   :"<<Which_drink<<endl;
+
+        cout<<"PRICE   :"<<price_drink<<endl;
+
+    }
+
+
+
+
+
+};
+
+class Account   :  public Drink
+
+{
+
+protected:
+
+    double calculate;
+
+    int total=0;
+
+    int payment_method;
+
+public:
+
+    Account()
+
+    {
+
+        calculate=0;
+
+    }
+
+    void paymentMethod(int total)
+
+    {
+
+        cout<<"select payment method"<<endl;
+
+        cout<<"Press 1 for Cash"<<endl;
+
+        cout<<"Press 2 for Credit Card "<<endl;
+
+        cin>>payment_method;
+
+
+
+        switch(payment_method)
+
+        {
+
+			case 1:
+
+			    {
+
+			        cash(total);
+
+                    break;
+
+			    }
+
+
+
+			case 2:
+
+			    {
+
+			        credit_card(total);
+
+                    break;
+
+			    }
+
+
+
+			default:
+
+			    {
+
+			        cout<<"PLZ PRESS VALID KEY"<<endl;
+
+			    }
+
+
+
+
+
+            }
+
+
+
+
+
+        }
+
+
+
+//----------------------------------------------
+
+    void tax(int total)
+
+    {
+
+        cout << "Sub-total: " << total << endl;
+
+        int taxCost=total*0.0825;
+
+        cout << "+ Tax : " << taxCost << endl;
+
+        total=total + (total*0.0825);
+
+        cout << "Total : " << total << endl;
+
+        paymentMethod(total);
+
+    }
+
+//-================================================
+
+    void cash(int total)
+
+    {
+
+        system("cls");
+
+        int cash_recieved;
+
+        cout<<"cash recieved_";
+
+        cin>>cash_recieved;
+
+        if(cash_recieved<total){
+
+            system("cls");
+
+            cout<<"insufficient ammount"<<endl;
+
+            paymentMethod(total);
+
+        }else{
+
+            cout<<"returned cash = "<<cash_recieved-total<<endl;
+
+        }
+
+
+
+    }
+
+    ///-------------------------------------
+
+    int quantity()
+
+    {
+
+        int quantity;
+
+        cout<<"enter quantity _";
+
+        cin>>quantity;
+
+        return quantity;
+
+    }
+
+    void credit_card(int total)
+
+    {
+
+        system("cls");
+
+        long long int card_number;
+
+        cout<<"card number_";
+
+        cin>>card_number;
+
+        cout<<"successful transaction"<<endl;
+
+
+
+    }
+
+
+
+
+
+
+
+};
+
+class Canteen   : public Account
+
+{
+
+private:
+
+//    Items fo;
+
+//    Drink dr;
+
+    int choice, qty;
+
+public:
+
+    Canteen(){}
+
+    void Order()
+
+    {
+
+        while(true)
+
+        {
+
+            cout << "Your current total is: RS _"<< total << endl<<endl;
+
+            cout << "Please enter the letter of your selection: ";
+
+            cin >> choice;
+
+
+
+		switch (choice)
+
+		{
+
+			case 1:
+
+			    {
+
+			      cout << "Sandwich - 120" << endl;
+
+                    qty=quantity();
+
+                    total= 120*qty+total;
+
+                    break;
+
+			    }
+
+
+
+
+
+			case 2:
+
+			    {
+
+			        cout << "Chips - 100" << endl;
+
+                    qty=quantity();
+
+                    total= 100*qty+total;
+
+                    break;
+
+			    }
+
+
+
+
+
+			case 3:
+
+			    {
+
+                    cout << "Pickle - 40" << endl;
+
+                    qty=quantity();
+
+                    total= 40*qty+total;
+
+                    break;
+
+			    }
+
+
+
+
+
+			case 4:
+
+			    {
+
+                    cout << "Brownie - 100" << endl;
+
+                    qty=quantity();
+
+                    total= 100*qty+total;
+
+                    break;
+
+			    }
+
+
+
+
+
+			case 5:
+
+			    {
+
+                    cout << "Regular Drink - 30" << endl;
+
+                    qty=quantity();
+
+                    total= 30*qty+total;
+
+                    break;
+
+			    }
+
+
+
+
+
+			case 6:
+
+			    {
+
+                    cout << "Large Drink - 110" << endl;
+
+                    qty=quantity();
+
+                    total= 110*qty+total;
+
+                    break;
+
+			    }
+
+
+
+
+
+			case 7:
+
+			    {
+
+                    cout << "Ice-cream - 60 RS" << endl;
+
+                    qty=quantity();
+
+                    total= 60*qty+total;
+
+                    break;
+
+			    }
+
+
+
+
+
+			case 8:
+
+			    {
+
+                    cout << "Coffee - 70 RS" << endl;
+
+                    qty=quantity();
+
+                    total= 70*qty+total;
+
+                    break;
+
+			    }
+
+
+
+
+
+
+
+			case 9:
+
+			    {
+
+			        cout << "Tea - 40 RS" << endl;
+
+                    qty=quantity();
+
+                    total= 40*qty+total;
+
+                    break;
+
+
+
+			    }
+
+
+
+
+
+
+
+			case 10:
+
+			    {
+
+                    cout << "Biscuits - 50 RS" << endl;
+
+                    qty=quantity();
+
+                    total= 50*qty+total;
+
+                    break;
+
+			    }
+
+
+
+
+
+
+
+			case 11:
+
+			    {
+
+                    cout << "Cereals - 120 RS" << endl;
+
+                    qty=quantity();
+
+                    total= 120*qty+total;
+
+                    break;
+
+			    }
+
+
+
+
+
+			case 12:
+
+			    {
+
+                        cout << "Milk - 130 RS" << endl;
+
+                    qty=quantity();
+
+                    total= 130*qty+total;
+
+                    break;
+
+			    }
+
+
+
+
+
+
+
+			case 13:
+
+			    {
+
+                        cout << "Cream - 80 RS" << endl;
+
+                    qty=quantity();
+
+                    total= 80*qty+total;
+
+                    break;
+
+			    }
+
+
+
+
+
+
+
+			case 14:
+
+			    {
+
+                        cout << "Chocolate - 100 RS" << endl;
+
+                    qty=quantity();
+
+                    total= 100*qty+total;
+
+                    break;
+
+			    }
+
+
+
+
+
+
+
+			case 15:
+
+			    {
+
+                        cout << "Toffee - 5 RS" << endl;
+
+                    qty=quantity();
+
+                    total= 5*qty+total;
+
+                    break;
+
+			    }
+
+
+
+
+
+
+
+			case 16:
+
+			    {
+
+                        cout << "Marshmello - 10 RS" << endl;
+
+                    qty=quantity();
+
+                    total= 10*qty+total;
+
+                    break;
+
+			    }
+
+
+
+
+
+
+
+			case 17:
+
+			    {
+
+                        cout << "Batteries - 60 RS" << endl;
+
+                    qty=quantity();
+
+                    total= 60*qty+total;
+
+                    break;
+
+			    }
+
+
+
+
+
+
+
+			case 18:
+
+			    {
+
+                        cout << "Perfumes - 300 RS" << endl;
+
+                    qty=quantity();
+
+                    total= 300*qty+total;
+
+                    break;
+
+			    }
+
+
+
+
+
+
+
+			case 19:
+
+			    {
+
+                        cout << "Hair-color - 90 RS" << endl;
+
+                    qty=quantity();
+
+                    total= 90*qty+total;
+
+                    break;
+
+			    }
+
+
+
+
+
+
+
+			case 20:
+
+			    {
+
+                        cout << "Meat - 300 RS" << endl;
+
+                    qty=quantity();
+
+                    total= 300*qty+total;
+
+                    break;
+
+			    }
+
+
+
+
+
+
+
+			case 21:
+
+			    {
+
+                        cout << "Fish - 600 RS" << endl;
+
+                    qty=quantity();
+
+                    total= 600*qty+total;
+
+                    break;
+
+			    }
+
+
+
+
+
+
+
+			case 22:
+
+				{
+
+                        cout << "Bread - 110 RS" << endl;
+
+                    qty=quantity();
+
+                    total= 110*qty+total;
+
+                    break;
+
+				}
+
+
+
+
+
+
+
+			case 23:
+
+			    {
+
+                        cout << "Butter - 160 RS" << endl;
+
+                    qty=quantity();
+
+                    total= 160*qty+total;
+
+                    break;
+
+			    }
+
+
+
+
+
+			case 24:
+
+			    {
+
+                        cout << "Egg - 20 RS" << endl;
+
+                    qty=quantity();
+
+                    total= 20*qty+total;
+
+                    break;
+
+
+
+			    }
+
+
+
+			case 25:
+
+			    {
+
+			        cout << "Sugar - 60 RS" << endl;
+
+                    qty=quantity();
+
+                    total= 60*qty+total;
+
+                    break;
+
+
+
+			    }
+
+
+
+
+
+			case 26:
+
+			    {
+
+                        cout << "Rice - 110 RS" << endl;
+
+                    qty=quantity();
+
+                    total= 110*qty+total;
+
+                    break;
+
+			    }
+
+
+
+
+
+			case 27:
+
+			    {
+
+                        cout << "Pasta - 150 RS" << endl;
+
+                    qty=quantity();
+
+                    total= 150*qty+total;
+
+                    break;
+
+			    }
+
+
+
+
+
+			case 28:
+
+			    {
+
+                        cout << "Honey - 250 RS" << endl;
+
+                    qty=quantity();
+
+                    total= 250*qty+total;
+
+                    break;
+
+			    }
+
+
+
+
+
+			case 29:
+
+			    {
+
+                        cout << "Nuts - 500 RS" << endl;
+
+                    qty=quantity();
+
+                    total= 500*qty+total;
+
+                    break;
+
+			    }
+
+
+
+
+
+			case 30:
+
+			    {
+
+                        cout << "Water - 80 RS" << endl;
+
+                    qty=quantity();
+
+                    total= 80*qty+total;
+
+                    break;
+
+			    }
+
+
+
+
+
+			case 0:
+
+			    {
+
+                        cout << "Canceled, please start over." << endl;
+
+                    total = 0;
+
+                    system("CLS");
+
+                    Menu();
+
+                    break;
+
+			    }
+
+
+
+
+
+			case 31:
+
+			    {
+
+			        tax(total);
+
+				return;
+
+			    }
+
+
+
+
+
+			default:
+
+			    {
+
+			      Menu();
+
+			    }
+
+
+
+		}
+
+	}
+
+
+
+}
+
+
+
+};
+
+int main()
+
+{
+
+    system("Color f9");
+
+    Canteen c;
+
+
+
+   c.Menu();
+
+   int choice;
+
+   string will;
+
+      cout<<"DO YOU WANT TO ORDER SOMETHING?  (yes|No)"<<endl;
+
+   cin>>will;
+
+   if(will =="yes" || will=="YES")
+
+   {
+
+        c.Order();
+
+   }
+
+   else
+
+   {
+
+       cout<<"MERA PUTR CHUTI KR"<<endl;
+
+   }
+
+
+
+
+
+    return 0;
+
+}
