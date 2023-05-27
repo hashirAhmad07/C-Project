@@ -1,0 +1,901 @@
+ /** 
+
+I’m a coffee addict. So, when I wake up in the morning, I go into my kitchen, switch on the
+
+coffee machine and make coffee. Sounds familiar?
+
+I need to know how to use my coffee machine to make coffee. I need to provide water and coffee
+
+beans, switch it on and select the kind of coffee I want to get. The machine brew the coffee I
+
+demanded.
+
+I just interact with a simple interface that doesn’t require any knowledge about the internal
+
+implementation.
+
+I want you to prepare a software that runs the machine and provides me with the selected coffee.
+
+     */
+
+
+
+
+
+#include <iostream>
+
+#include <stdlib.h>
+
+using namespace std;
+
+class CAPPUCCINO{
+
+private:
+
+    int coconut_Particles;
+
+    int coco_beans;
+
+public:
+
+    CAPPUCCINO()
+
+    {
+
+        coconut_Particles=2;
+
+        coco_beans=50;
+
+    }
+
+    CAPPUCCINO(int cp, int cb)
+
+    {
+
+        coconut_Particles=cp;
+
+        coco_beans=cb;
+
+    }
+
+    void setcoconut(int cp)
+
+    {
+
+        coconut_Particles=cp;
+
+    }
+
+    int getcoconut()
+
+    {
+
+        return coconut_Particles;
+
+    }
+
+    void setcoco(int cb)
+
+    {
+
+        coco_beans=cb;
+
+    }
+
+    int getcoco()
+
+    {
+
+        return coco_beans;
+
+    }
+
+    void displayCuppacinu()
+
+    {
+
+        cout<<"TASTE OUR DELICIUOS 'CAPPUCCINO' COFFEE WITH COCONUT ASHES AND COCO BEANS"<<endl;
+
+        cout<<"WITH "<<coconut_Particles<<" TABLESPOON OF COCONNUT PARTICLES "<<" AND "<<coco_beans<<" TABLESPOON OF COCO BEANS"<<endl;
+
+    }
+
+
+
+};
+
+class FRAPPE{
+
+    int ice;
+
+    int flavour_syrup;          /// in quantity
+
+public:
+
+    FRAPPE()
+
+    {
+
+        ice=2;
+
+        flavour_syrup=.15;
+
+    }
+
+    FRAPPE(int ic, int fs)
+
+    {
+
+        ice=ic;
+
+        flavour_syrup=fs;
+
+    }
+
+    void setice(int ic)
+
+    {
+
+        ice=ic;
+
+    }
+
+    int getice()
+
+    {
+
+        return ice;
+
+    }
+
+    void setflavour(int fs)
+
+    {
+
+        flavour_syrup=fs;
+
+    }
+
+    int getflavour()
+
+    {
+
+        return flavour_syrup;
+
+    }
+
+
+
+    void displayFrappe()
+
+    {
+
+        cout<<"TASTE OUR FRAPPE COFFEE YOU LIKE IT"<<endl;
+
+        cout<<"NEW 'FRAPPE' ICE COFFEE WITH WITH  PINEAPPLE FLAVOUR SYRUP"<<endl;
+
+    }
+
+
+
+
+
+
+
+};
+
+class CAFFE_LATTE{
+
+private:
+
+    int   coffee_beans;
+
+
+
+    ///float sugar;
+
+public:
+
+   CAFFE_LATTE()
+
+   {
+
+       coffee_beans=3;
+
+   }
+
+   CAFFE_LATTE( int cb, float m)///float s)
+
+   {
+
+       coffee_beans=cb;
+
+
+
+       ///sugar=s;
+
+   }
+
+   void setcoffeebean(int cb)
+
+   {
+
+       coffee_beans=cb;
+
+   }
+
+   int getCoffebean()
+
+   {
+
+       return coffee_beans;
+
+   }
+
+   void displaycaffelate()
+
+   {
+
+       cout<<"TASTE OUR CAFFE LATTE COFFEE YOU LIKE IT"<<endl;
+
+
+
+       cout<<"WE ADD "<<coffee_beans<<" TABLESPOON OF COFFEE BEANS "<<endl;///<<" CUP OF MILK AND SUGAR "<<sugar<<" TABLESPOON"<<endl;
+
+   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+};
+
+class CAFFE_MOCHA{
+
+private:
+
+    int   chocalate;
+
+    int   whipped_cream;
+
+    float milk;
+
+    //float sugar;
+
+public:
+
+   CAFFE_MOCHA()
+
+   {
+
+       chocalate=2;
+
+       whipped_cream=3;
+
+       milk=1;
+
+      // sugar=1;
+
+   }
+
+   CAFFE_MOCHA(int c, int wc, float m)//, float s)
+
+   {
+
+       chocalate=c;
+
+       whipped_cream=wc;
+
+       milk=m;
+
+       //sugar=s;
+
+   }
+
+   void setchocalate(int c)
+
+   {
+
+       chocalate=c;
+
+   }
+
+   int getchocalate()
+
+   {
+
+       return chocalate;
+
+   }
+
+   void setcream(int wc)
+
+   {
+
+       whipped_cream=wc;
+
+   }
+
+   int getCream()
+
+   {
+
+       return whipped_cream;
+
+   }
+
+
+
+
+
+   void displayCOFFE()
+
+   {
+
+       cout<<"TASTE OUR CAFFE MOCHA COFFFE "<<endl;
+
+//       cout<<"WE ADD "<<chocalate<<" CUBE OF CHOCALATE WITH "<<whipped_cream<<" CUBE OF DELICIOUS CREAM"<<endl;
+
+//       cout<<"HAVING "<<milk<<endl;
+
+   }
+
+
+
+
+
+};
+
+
+
+class Coffee{
+
+private:
+
+    CAFFE_MOCHA CM;
+
+    CAFFE_LATTE CT;
+
+    FRAPPE F;
+
+    CAPPUCCINO cp;
+
+    bool  switch2;
+
+    bool  choice;
+
+    float sugar;
+
+    float milk;
+
+    int coffee1,coffee2,coffee3,coffee4;
+
+
+
+public:
+
+    Coffee()
+
+    {
+
+        switch2=false;
+
+        sugar=100;
+
+    }
+
+    void switch_machine(bool Ch)
+
+    {
+
+
+
+        if(Ch == true)
+
+            switch2=true;
+
+        else
+
+            switch2=false;
+
+    }
+
+    void setsugar(float s)
+
+   {
+
+
+
+       sugar=s;
+
+
+
+   }
+
+   float getSugar()
+
+   {
+
+       return sugar;
+
+   }
+
+    void setmilk(float m)
+
+   {
+
+       milk=m;
+
+   }
+
+   float getMilk()
+
+   {
+
+       return milk;
+
+   }
+
+   void Mix_CAPPUCCINO()
+
+   {
+
+
+
+       coffee1=cp.getcoconut()+cp.getcoco()+sugar+milk;
+
+   }
+
+   void Mix_FRAPPE()
+
+   {
+
+
+
+       coffee2=F.getflavour()+F.getice()+sugar+milk;
+
+   }
+
+   void Mix_CAFFE_LATTE()
+
+   {
+
+        coffee3=CT.getCoffebean()+milk+sugar;
+
+   }
+
+   void Mix_Caffe_Mocca()
+
+   {
+
+       coffee4=CM.getchocalate()+CM.getCream()+milk+sugar;
+
+   }
+
+   void display_frappe()
+
+   {
+
+       F.displayFrappe();
+
+       cout<<"\n\nYOUR COFEE IS READY  HAVE A NICE DAY:"<<endl;
+
+   }
+
+   void display_caffemaco()
+
+   {
+
+       CM.displayCOFFE();
+
+       cout<<"\n\nYOUR COFEE IS READY HAVE A NICE DAY:"<<endl;
+
+   }
+
+   void display_caffelatte()
+
+   {
+
+       CT.displaycaffelate();
+
+       cout<<"\n\nYOUR COFEE IS READY  HAVE A NICE DAY:"<<endl;
+
+   }
+
+   void display_capiccuni()
+
+   {
+
+       cp.displayCuppacinu();
+
+       cout<<"\n\nYOUR COFEE IS READY  HAVE A NICE DAY:"<<endl;
+
+
+
+   }
+
+    void display()
+
+    {
+
+       cout<<"MACHINE IS :"<<switch2<<endl;
+
+
+
+       cout<<"~~~~~~INGREDIENTS---->>"<<endl;
+
+    }
+
+
+
+
+
+
+
+};
+
+int main()
+
+{
+
+    Coffee C;
+
+    CAFFE_MOCHA CM;
+
+    CAFFE_LATTE CT;
+
+    FRAPPE F;
+
+    CAPPUCCINO CP;
+
+    cout<<"DO YOU WANT TO SWITCH ON YOUR COFFEE MACHINE (1|0)"<<endl;   ///START MACHINE
+
+    bool choice;
+
+    cin>>choice;
+
+    if(choice==true)
+
+    C.switch_machine(choice);
+
+    else{
+
+         cout<<"MACHINE IS OFF"<<endl;
+
+        return 0;
+
+    }
+
+    C.display();
+
+
+
+    system("color 40");
+
+    cout<<"~~~~~~~~~~~~WE HAVE FOLLOWING FLAVOUR OF COFFEE~~~~~~~~~~~~~~\n"
+
+           "\nPRESS 1~CAFFÈ MOCHA\n"
+
+           "A caffèe latte with chocolate and whipped cream,\n"
+
+           "made by pouring about 2 cl of chocolate sauce into the glass,\n"
+
+           "followed by an espresso shot and steamed milk.\n\n"
+
+
+
+           "\nPRESS 2~CAFFÈ LATTE\n"
+
+           "A tall, mild 'milk coffee' (about 150-300 ml).\n`"
+
+           "An espresso with steamed milk and only a little milk foam poured over it.\n "
+
+           "Serve in a latte glass or a coffee cup. Flavoured syrup can be added. \n\n"
+
+
+
+           "\nPRESS 3~FRAPPÉ\n"
+
+           "Rich iced coffee made of espresso, milk and ice. \n`"
+
+           "Flavoured syrup can be added (about 300 ml).\n "
+
+           "Mixed in a blender and served for example in a latte glass. \n\n"
+
+
+
+           "\nPRESS 4~CAPPUCCINO\n"
+
+           "A coffee drink having coconut & coco beans ashes of espresso and a milk foam mixture \n(drink size about 160–240 ml). Served in a cappuccino cup.\n";
+
+
+
+
+
+
+
+    int key;
+
+    cout<<"ENTER YOUR KEY"<<endl;
+
+    cin>>key;
+
+    switch(key)
+
+    {
+
+    case 1:
+
+        {
+
+            system("color 70");
+
+            cout<<"ENTER NUMBER OF CUPS "<<endl;
+
+            int count;
+
+            cin>>count;
+
+            system("color 70");
+
+            cout<<"DO YOU WANT TO ADD SUGAR IN YOUR COFFEE (YES|NO)"<<endl;
+
+            string choose;
+
+            cin>>choose;
+
+            if(choose=="yes" || choose=="YEAH" || choose=="YES" || choose=="yup" || choose=="yeah" || choose=="YUP")
+
+            C.setsugar(1.5);
+
+            else
+
+            C.setsugar(0);
+
+            CM.setchocalate(count);
+
+            CM.setcream(count);
+
+            string option;
+
+            cout<<"DO YOU WANT TO MAKE IT ( YES|NO )"<<endl;
+
+            cin>>option;
+
+            system("cls");
+
+            if(choose=="yes" || choose=="YEAH" || choose=="YES" || choose=="yup" || choose=="yeah" || choose=="YUP")
+
+            {
+
+                cout<<"YOU ORDERED COFFEE IS "<<count<<endl;
+
+                C.display_caffemaco();
+
+            }
+
+            else if(option=="no" || option=="NO")
+
+                return 0;
+
+
+
+            break;
+
+        }
+
+    case 2:
+
+        {
+
+            system("color 80");
+
+            cout<<"ENTER NUMBER OF CUPS "<<endl;
+
+            int count;
+
+            cin>>count;
+
+            system("color 70");
+
+            C.setmilk(count);
+
+            CT.setcoffeebean(count);
+
+            cout<<"DO YOU WANT TO ADD SUGAR IN YOUR COFFEE (YES|NO)"<<endl;
+
+            string choose;
+
+            cin>>choose;
+
+            if(choose=="yes" || choose=="YEAH" || choose=="YES" || choose=="yup" || choose=="yeah" || choose=="YUP")
+
+            C.setsugar(1.5);
+
+            else
+
+            C.setsugar(0);
+
+            string option;
+
+            cout<<"DO YOU WANT TO MAKE IT ( YES|NO )"<<endl;
+
+            cin>>option;
+
+            system("cls");
+
+            if(choose=="yes" || choose=="YEAH" || choose=="YES" || choose=="yup" || choose=="yeah" || choose=="YUP")
+
+            {
+
+                cout<<"YOU ORDERED COFFEE IS "<<count<<endl;
+
+                C.display_caffelatte();
+
+            }
+
+            else if(option=="no" || option=="NO")
+
+                return 0;
+
+
+
+            break;
+
+        }
+
+    case 3:
+
+        {
+
+            system("color 90");
+
+            cout<<"ENTER NUMBER OF CUPS "<<endl;
+
+            int count;
+
+            cin>>count;
+
+            system("color 70");
+
+            C.setmilk(count);
+
+            CT.setcoffeebean(count);
+
+            string option;
+
+            cout<<"DO YOU WANT TO ADD SUGAR IN YOUR COFFEE (YES|NO)"<<endl;
+
+            string choose;
+
+            cin>>choose;
+
+            if(choose=="yes" || choose=="YEAH" || choose=="YES" || choose=="yup" || choose=="yeah" || choose=="YUP")
+
+            C.setsugar(1.5);
+
+            else
+
+            C.setsugar(0);
+
+
+
+            F.setice(2);
+
+
+
+            F.setflavour(20);
+
+            cout<<"DO YOU WANT TO MAKE IT ( YES|NO )"<<endl;
+
+            cin>>option;
+
+            system("cls");
+
+            if(choose=="yes" || choose=="YEAH" || choose=="YES" || choose=="yup" || choose=="yeah" || choose=="YUP")
+
+            {
+
+                cout<<"YOU ORDERED COFFEE IS "<<count<<endl;
+
+                C.display_frappe();
+
+            }
+
+            else if(option=="no" || option=="NO")
+
+                return 0;
+
+
+
+            break;
+
+        }
+
+    case 4:
+
+        {
+
+            system("color 50");
+
+            cout<<"ENTER NUMBER OF CUPS "<<endl;
+
+            int count;
+
+            cin>>count;
+
+            system("color 70");
+
+            C.setmilk(count);
+
+            CP.setcoconut(count);
+
+            string option;
+
+            cout<<"DO YOU WANT TO ADD SUGAR IN YOUR COFFEE (YES|NO)"<<endl;
+
+            string choose;
+
+            cin>>choose;
+
+            if(choose=="yes" || choose=="YEAH" || choose=="YES" || choose=="yup" || choose=="yeah" || choose=="YUP")
+
+            C.setsugar(1.5);
+
+            else
+
+            C.setsugar(0);
+
+
+
+            CP.setcoconut(2);
+
+
+
+            F.setflavour(20);
+
+            cout<<"DO YOU WANT TO MAKE IT ( YES|NO )"<<endl;
+
+            cin>>option;
+
+            system("cls");
+
+            if(choose=="yes" || choose=="YEAH" || choose=="YES" || choose=="yup" || choose=="yeah" || choose=="YUP")
+
+            {
+
+                cout<<"YOU ORDERED COFFEE IS "<<count<<endl;
+
+                C.display_capiccuni();
+
+            }
+
+            else if(option=="no" || option=="NO")
+
+                return 0;
+
+
+
+            break;
+
+        }
+
+
+
+
+
+    }
+
+
+
+    return 0;
+
+}
