@@ -1,0 +1,298 @@
+#include <iostream>
+#include<conio.h>
+//#include<windows.h>
+
+using namespace std;
+
+class Client
+{
+protected:
+    int client_no;
+    string id;
+    string name,contact,ID,address; int cash;
+public:
+   // struct Data{ string name,contact,ID,address; int cash;}Data[1000];
+    Client()
+    {
+        client_no=0;
+    }
+    void setdata()
+    {
+        cout<<"ENTER THE DATA OF PERSON "<<client_no+1<<endl;
+        cout<<"ENTER NAME : ";
+        cin>>name;
+        cout<<"ENTER ID : ";
+        cin>>ID;
+        cout<<"ENTER ADDRESS : ";
+        cin>>address;
+        cout<<"ENTER CONTACT : ";
+        cin>>contact;
+        cout<<"ENTER CASH : ";
+        cin>>cash;
+        client_no++;
+
+    }
+    void getdata()
+    {
+        for(int i=0;i<client_no;i++)
+        {
+            cout<<"*****************************"<<endl;
+            cout<<"DATA OF PERSON : "<<i+1<<endl;
+            cout<<"NAME : "<<name<<endl;
+            cout<<"ID : "<<ID<<endl;
+            cout<<"CONTACT : "<<contact<<endl;
+            cout<<"ADDRESS : "<<address<<endl;
+            cout<<"CASH : "<<cash<<endl;
+            cout<<"*****************************"<<endl;
+
+        }
+    }
+    void update(){
+    cout<<"ENTER THE ID OF USER YOU WANT TO UPDATE : ";
+    cin>>id;
+    for(int i=0;i<client_no;i++)
+    {
+        if(id==ID)
+        {
+            cout<<"PREVIOUS DATA"<<endl;
+            cout<<"*****************************"<<endl;
+            cout<<"DATA OF PERSON : "<<i+1<<endl;
+            cout<<"NAME           : "<<name<<endl;
+            cout<<"ID             : "<<ID<<endl;
+            cout<<"CONTACT        : "<<contact<<endl;
+            cout<<"ADDRESS        : "<<address<<endl;
+            cout<<"CASH           : "<<cash<<endl;
+            cout<<"*****************************"<<endl;
+            cout<<"\nENTER NEW DATA"<<endl;
+            cout<<"ENTER NAME : ";
+        cin>>name;
+        cout<<"ENTER ID : ";
+        cin>>ID;
+        cout<<"ENTER ADDRESS : ";
+        cin>>address;
+        cout<<"ENTER CONTACT : ";
+        cin>>contact;
+        cout<<"ENTER CASH : ";
+        cin>>cash;
+        break;
+        }
+        if(i==client_no-1)
+                cout<<"NO SEARCH RECORD FOUND"<<endl;
+    }
+    }
+
+};
+
+
+class Account : public Client
+{
+    string id;
+public:
+
+    void searching()
+    {
+        cout<<"ENTER ID OF USER WHOSE DATA YOU WANT TO SEARCH FOT : ";
+        cin>>id;
+        for(int i=0;i<client_no;i++)
+        {
+            if(id==ID)
+            {
+            cout<<"DATA OF PERSON"<<i+1<<endl;
+            cout<<"NAME    : "<<name<<endl;
+            cout<<"ID      : "<<ID<<endl;
+            cout<<"Contact : "<<contact<<endl;
+            cout<<"Address : "<<address<<endl;
+            cout<<"Cash    : "<<cash<<endl;
+            break;
+            }
+            if(i==client_no-1)
+                cout<<"NO SEARCH RECORD FOUND"<<endl;
+        }
+    }
+
+    void transactions()
+    {
+        char trans;
+        int csh;
+        cout<<"ENTER ID OF USER : ";
+        cin>>id;
+        for(int i=0;i<client_no;i++)
+        {
+            if(id==ID)
+            {
+                cout<<"Data of Person"<<i+1<<endl;
+            cout<<"NAME          : "<<name<<endl;
+            cout<<"CONTACT       : "<<contact<<endl;
+            cout<<"ADDRESS       : "<<address<<endl;
+            cout<<"EXISTING CASH : "<<cash<<endl;
+            cout<<"PRESS 1 TO DEPOSIT "<<endl;
+            cout<<"PRESS 2 TO WITHDRAW"<<endl;
+            cin>>trans;
+            switch(trans)
+            {
+            case '1':
+                cout<<"HOW MUCH CASH YOU WANT TO DEPOSIT : ";
+                cin>>csh;
+                cash+=csh;
+                cout<<"YOUR BALANCED NOW IS "<<cash<<endl;
+                break;
+            case '2':
+               // check:
+                cout<<"HOW MUCH CASH YOU WANT TO WITHDRAW : ";
+                cin>>csh;
+                if(csh>cash)
+                {
+                    cout<<"YOUR EXISTING CASH IS JUST : "<<cash<<endl;
+                   // Sleep(3000);
+                    //goto check;
+                }
+                cash-=csh;
+                cout<<"Your New Cash is : "<<cash<<endl;
+                break;
+            default:
+                cout<<"Invalid Input"<<endl;
+                break;
+            }
+            break;
+
+            }
+            if(i==client_no-1)
+                cout<<"NO SEARCH RECORD FOUND "<<endl;
+
+        }
+    }
+
+    void del()
+    {
+        char ch;
+        cout<<"PRESS 1 TO DELETE SPECIFIC RECORD "<<endl;
+        cout<<"PRESS 2 TO DELETE FILL RECORD "<<endl;
+        cin>>ch;
+        switch(ch)
+        {
+        case'1':
+            cout<<"ENTER ID OF USER WHOSE DATA YOU WANT TO DELETE : ";
+            cin>>id;
+            for(int i=0;i<client_no;i++)
+        {
+            if(id==ID)
+            {
+
+                for(int j=i;j<client_no;j++){
+                name=name;
+                contact=contact;
+                address=address;
+                ID=ID;
+                cash=cash;
+                client_no--;
+                cout<<"YOUR REQUIRES DATA IS DELETED "<<endl;
+                break;
+                }
+
+            }
+            if(i==client_no-1)
+                cout<<"NO SEARCH RECORD FOUND"<<endl;
+        }
+        break;
+        case'2':
+            client_no=0;
+            cout<<"ALL RECORD IS DELETED "<<endl;
+            break;
+        default:
+            cout<<"INVALID INPUT"<<endl;
+            break;
+    }
+    }
+
+};
+class Bank : public Account
+{
+private:
+    char ch;
+public:
+    void choice()
+    {while(ch!=7){
+        cout<<"~~>PRESS 1 TO CREATE ACCOUNT "<<endl;
+        cout<<"~~>PRESS 2 TO VIEW ACCOUNT   "<<endl;
+        cout<<"~~>PRESS 3 TO UPDTE ACCOUNT INFORMATION "<<endl;
+        cout<<"~~>PRESS 4 TO VIEW ACCOUNT DETAILS "<<endl;
+        cout<<"~~>PRESS 5 FOR TRANSACTIONS "<<endl;
+        cout<<"~~>PRESS 6 TO REMOVE EXISTING ACCOUNT "<<endl;
+        cout<<"~~>PRESS 7 TO EXIT "<<endl;
+        cin>>ch;
+        system("cls");
+        switch(ch)
+        {
+            case'1':
+                system("color 45");
+                Client::setdata();
+                break;
+            case'2':
+                system("color 90");
+                if(client_no==0)
+                {
+                    cout<<"NO DATA IS ENTERED "<<endl;
+                   // Sleep(2000);
+                }
+                else
+                Client::getdata();
+                break;
+            case'3':
+                system("color 86");
+                if(client_no==0)
+                {
+                    cout<<"NO DATA IS ENTERED "<<endl;
+                   // Sleep(2000);
+                }
+                else
+                Client::update();
+                break;
+            case'4':
+                system("color 25");
+                if(client_no==0)
+                {
+                    cout<<"No data is entered"<<endl;
+                   // Sleep(2000);
+                }
+                else
+                Account::searching();
+                break;
+            case'5':
+                system("color 60");
+                if(client_no==0)
+                {
+                    cout<<"NO DATA IS ENTERED "<<endl;
+                    //Sleep(2000);
+                }
+                else
+                Account::transactions();
+                break;
+            case'6':
+                system("color 40");
+                if(client_no==0)
+                {
+                    cout<<"NO DATA IS ENTERED "<<endl;
+                   // Sleep(2000);
+                }
+                else
+                Account::del();
+                break;
+            case'7':
+                system("color 77");
+                ch=7;
+                cout<<"SUCCESSFULLY EXIT FROM MENU "<<endl;
+                break;
+        }
+    }
+    }
+};
+
+
+
+int main()
+{
+    system("color 75 ");
+    Bank b1;
+    b1.choice();
+}
+
