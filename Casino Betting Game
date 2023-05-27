@@ -1,0 +1,189 @@
+// Casino betting game
+
+#include <iostream>
+#include <string> 
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+void rules();
+
+class account
+{
+public:
+	string username, pass;
+	const string adminuser = "Hashir", adminpass = "admin";
+	account()
+	{
+
+		username = "Hashir";
+		pass = "1234";
+	}
+	account(string name, string password)
+	{
+		username = name;
+		pass = password;
+	}
+	bool loginacc()
+	{
+		int ch;
+		bool login = false;
+		do {
+
+			system("cls");
+			cout << "\n\t\t========WELCOME TO CASINO WORLD=======\n\n";
+			cout << "press 1 to login\n press 2 to signup\n";
+			string a, b;
+			do
+			{
+				cin >> ch;
+			} while (ch != 1 && ch != 2);
+
+			if (ch == 1)
+			{
+				do {
+					cout << "Enter username\n";
+					cin >> a;
+					cout << "Enter password\n";
+					cin >> b;
+					if (!logincheck(a, b))
+					{
+						cout << "Wrong credentials\n 1 to enter again \n 2 to exit\n";
+						cin >> ch;
+						if (ch == 2)
+							return false;
+					}
+					else
+					{
+						cout << "login successful\n";
+						login = true;
+					}
+				} while (!logincheck(a, b));
+			}
+			if (ch == 2)
+			{
+				cout << "Enter Username\n";
+				cin >> a;
+				cout << "Enter password\n";
+				cin >> b;
+				username = a;
+				pass = b;
+			}
+			system("pause");
+		} while (!login);
+	}
+	bool logincheck(string a, string b)
+	{
+		if (a == username && b == pass)
+			return true;
+		else
+			if (a == adminuser && b == adminpass)
+				return true;
+		return false;
+	}
+};
+class player :public account
+{
+public:
+	string playerName;
+	int balance;
+	int bettingAmount;
+	player()
+	{
+		playerName = username;
+	}
+};
+class game :public player
+{
+public:
+	friend void rules();
+	void random()
+	{
+		dice = rand() % 10 + 1;
+
+	}
+	game()
+	{
+
+	}
+	game(string name, int bal)
+	{
+		playerName = name;
+		balance = bal;
+	}
+	int guess;
+	int dice;
+	friend int guess(player);
+	void play()
+	{
+		system("cls");
+		rules();
+		cout << "\n\nYour current balance is $ " << balance << "\n";
+		// Get player's betting balance
+		do
+		{
+			cout << "Hey, " << playerName << ", enter amount to bet : $";
+			cin >> bettingAmount;
+			if (bettingAmount > balance)
+				cout << "Betting balance can't be more than current balance!\n"
+				<< "\nRe-enter balance\n ";
+		} while (bettingAmount > balance);
+		// Get player's numbers
+		do
+		{
+			cout << "Guess any betting number between 1 & 10 :";
+			cin >> guess;
+			if (guess <= 0 || guess > 10)
+				cout << "\nNumber should be between 1 to 10\n"
+				<< "Re-enter number:\n ";
+		} while (guess <= 0 || guess > 10);
+		random();
+		if (dice == guess)
+		{
+			cout << "\n\nYou are in luck!! You have won Rs." << bettingAmount * 10;
+			balance = balance + bettingAmount * 10;
+		}
+		else
+		{
+			cout << "Oops, better luck next time !! You lost $ " << bettingAmount << "\n";
+			balance = balance - bettingAmount;
+		}
+		cout << "\nThe winning number was : " << dice << "\n";
+		cout << "\n" << playerName << ", You have balance of $ " << balance << "\n";
+		if (balance == 0)
+		{
+			cout << "You have no money to play ";
+			return;
+		}
+	}
+};
+
+int main()
+{
+	game pl1;
+	char choice;
+	srand(time(0));
+	bool log;
+	log = pl1.loginacc();
+	if (log != false)
+	{
+		cout << "\n\nEnter the starting balance to play game : $";
+		cin >> pl1.balance;
+		do
+		{
+			pl1.play();
+			cout << "\n\n-->Do you want to play again (y/n)? ";
+			cin >> choice;
+		} while (choice == 'Y' || choice == 'y');
+		cout << "\n\n\n";
+		cout << "\n\nThanks for playing the game. Your balance is $ " << pl1.balance << "\n\n";
+	}
+	return 0;
+}
+void rules()
+{
+	system("cls");
+	cout << "\t\t======CASINO NUMBER GUESSING RULES!======\n";
+	cout << "\t1. Choose a number between 1 to 10\n";
+	cout << "\t2. Winner gets 10 times of the money bet\n";
+	cout << "\t3. Wrong bet, and you lose the amount you bet\n\n";
+}
